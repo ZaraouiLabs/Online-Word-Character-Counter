@@ -30,12 +30,15 @@
         }
         .tool-btn:hover { background: #f5f3ff; color: var(--primary); border-bottom-color: #e0e7ff; }
 
+        /* Mobile specific styles */
+        .mobile-nav { display: none; width: 100%; background: white; padding: 15px; border-bottom: 1px solid var(--border); }
+        details summary { font-weight: 800; cursor: pointer; padding: 10px; color: var(--primary); }
+
         .main-content { flex: 1; padding: 60px 40px; display: flex; flex-direction: column; align-items: center; }
         .wrapper { max-width: 800px; width: 100%; }
 
         h1 { margin: 0 0 40px 0; color: #0f172a; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; }
 
-        /* Ad Containers */
         .ad-container { display: flex; justify-content: center; margin: 20px 0; overflow: hidden; }
         
         .card { background: white; padding: 32px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
@@ -55,7 +58,8 @@
 
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 30px 20px; }
+            .sidebar { display: none; }
+            .mobile-nav { display: block; }
             .main-content { padding: 30px 20px; }
         }
     </style>
@@ -63,6 +67,13 @@
 <body>
 
     <div class="top-accent"></div>
+
+    <nav class="mobile-nav">
+        <details>
+            <summary>See more tools</summary>
+            <div id="mobile-tools-list"></div>
+        </details>
+    </nav>
 
     <aside class="sidebar">
         <div class="brand">UtilitySuite</div>
@@ -73,11 +84,8 @@
         <div class="wrapper">
             <h1>WordCount Pro</h1>
 
-            <!-- Top Ad Slot -->
             <div class="ad-container">
-                <script>
-                    atOptions = { 'key' : 'ea9023c6230a4134ea2bb21d415f3647', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-                </script>
+                <script>atOptions = { 'key' : 'ea9023c6230a4134ea2bb21d415f3647', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
                 <script src="https://www.highperformanceformat.com/ea9023c6230a4134ea2bb21d415f3647/invoke.js"></script>
             </div>
 
@@ -94,11 +102,8 @@
                 </div>
             </div>
 
-            <!-- Middle Ad Slot -->
             <div class="ad-container">
-                <script>
-                    atOptions = { 'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
-                </script>
+                <script>atOptions = { 'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
                 <script src="https://www.highperformanceformat.com/7cf39fb102b8e5ac06d9ab8ec745e58c/invoke.js"></script>
             </div>
         </div>
@@ -131,7 +136,10 @@
             { name: "Pass Generator", url: "https://zaraouilabs.github.io/Password_Generator/" },
             { name: "Loan Calculator", url: "https://zaraouilabs.github.io/loan-calculator/" }
         ];
-        document.getElementById('tools-sidebar').innerHTML = tools.map(t => `<a href="${t.url}" class="tool-btn">${t.name}</a>`).join('');
+        
+        const toolsHTML = tools.map(t => `<a href="${t.url}" class="tool-btn">${t.name}</a>`).join('');
+        document.getElementById('tools-sidebar').innerHTML = toolsHTML;
+        document.getElementById('mobile-tools-list').innerHTML = toolsHTML;
     </script>
     <script src="https://pl30403648.effectivecpmnetwork.com/8d/6e/16/8d6e16cf626599011a4b1d03060dc5cf.js"></script>
 </body>
